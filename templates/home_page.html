@@ -1,0 +1,23 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid aos-init aos-animate" data-aos="fade" data-aos-delay="500">
+        <div class="row">
+            {% for category in categories %}
+                <div class="col-lg-4">
+                    <div class="image-wrap-2">
+                        <div class="image-info">
+                            <h2 class="mb-3">{{ category.name }}</h2>
+                            <a href="/category/{{ category.name }}" class="btn btn-outline-white py-2 px-4">More
+                                Photos</a>
+                        </div>
+                        <img src="{{ category.image.url }}" alt="Image" class="img-fluid"
+                             style="max-width: 100%; max-height: 100%">
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

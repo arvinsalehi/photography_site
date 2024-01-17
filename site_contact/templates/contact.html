@@ -1,0 +1,96 @@
+{% extends 'shared/_MainLayout.html' %}
+{% url 'Contact_Us:contact' as contact_form %}
+
+{% block content %}
+    <div class="site-section aos-init aos-animate" data-aos="fade">
+        <div class="container">
+
+            <div class="row justify-content-center">
+
+                <div class="col-md-7">
+                    <div class="row mb-5">
+                        <div class="col-12 ">
+                            <h2 class="site-section-heading text-center">Contact</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mb-5">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row form-group">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label class="text-white" for="fname">First Name</label>
+                                {{ contact_form.first_name }}
+                                {% for error in contact_form.first_name.errors %}
+                                    <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-white" for="lname">Last Name</label>
+                                {{ contact_form.last_name }}
+                                {% for error in contact_form.last_name.errors %}
+                                    <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+
+                            <div class="col-md-12">
+                                <label class="text-white" for="email">Email</label>
+                                {{ contact_form.email }}
+                                {% for error in contact_form.email.errors %}
+                                    <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+
+                            <div class="col-md-12">
+                                <label class="text-white" for="subject">Subject</label>
+                                {{ contact_form.subject }}
+                                {% for error in contact_form.subject.errors %}
+                                    <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="text-white" for="message">Message</label>
+                                {{ contact_form.text }}
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Send Message" class="btn btn-primary py-2 px-4 text-white">
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="col-lg-3 ml-auto">
+                    <div class="mb-3">
+                        <p class="mb-0 font-weight-bold text-white" style="direction: rtl">Addres</p>
+                        <p class="mb-4" style="direction: rtl">{{ site_setting.address }}</p>
+
+                        <p class="mb-0 font-weight-bold text-white">Phone</p>
+                        <p class="mb-4"><a href="#">{{ site_setting.phone }}</a></p>
+
+                        <p class="mb-0 font-weight-bold text-white">Email</p>
+                        <p class="mb-0" style="direction: rtl"><a href="#">{{ site_setting.email }}</a></p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

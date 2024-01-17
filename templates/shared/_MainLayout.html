@@ -1,0 +1,19 @@
+{% load render_partial %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% include "shared/HeaderRef.html" %}
+</head>
+
+<body data-aos-easing="slide" data-aos-duration="800" data-aos-delay="0">
+<div class="site-wrap">
+    {% render_partial "photography_site.views.header" %}
+    {% block content %}{% endblock content %}
+    {% render_partial "photography_site.views.footer" %}
+    {% include "shared/FooterRef.html" %}
+</div>
+</body>
+</html>

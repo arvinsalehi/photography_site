@@ -1,0 +1,31 @@
+{% extends "shared/_MainLayout.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="site-section aos-init aos-animate" data-aos="fade">
+        <div class="container-fluid">
+
+            <div class="row justify-content-center">
+
+                <div class="col-md-7">
+                    <div class="row mb-5">
+                        <div class="col-12 ">
+                            <h2 class="site-section-heading text-center">{{ category_name }} Gallery</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" id="lightgallery">
+                {% for object in object_list %}
+                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item aos-init aos-animate" data-aos="fade"
+                         data-src="{{ object.image.url }}"
+                         data-sub-html="<h4>{{ object.title }}</h4><p>{{ object.description }}</p>">
+                        <a href="{{ object.visit_plus }}"><img src="{{ object.image.url }}" alt="IMage"
+                                                   class="img-fluid"></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
